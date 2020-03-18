@@ -5,13 +5,23 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using TransportCompany.Models;
+using TransportCompany.Data;
+using TransportCompany.Models.CodeFirst;
 
 namespace TransportCompany.Controllers
 {
     public class HomeController : Controller
     {
+        private TransCompContext db;
+
+        public HomeController(TransCompContext context)
+        {
+            db = context;
+        }
+
         public IActionResult Index()
         {
+            db.Positions.Add(new Position { Id = 1, JobTitle = "1" });
             return View();
         }
 
