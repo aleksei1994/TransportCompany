@@ -1,0 +1,55 @@
+﻿@using X.PagedList.Mvc.Core
+@using X.PagedList
+@model IPagedList<TransportCompany.Models.CodeFirst.TariffPlan>
+@{
+    ViewData["Title"] = "Тарифы";
+}
+
+<h2>Тарифы</h2>
+
+<div>
+    @Html.ActionLink("Добавить", "Create")
+</div>
+
+<div>
+    <form>
+        <p>
+            Название тарифа
+            <input type="text" name="searchTitle" value="@ViewData["searchTitle"]" />
+            <input type="submit" value="Фильтровать" />
+        </p>
+    </form>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <table class="table table-bordered">
+            <tr>
+                <th>#</th>
+                <th>Название тарифа</th>
+                <th>Описание тарифа</th>
+                <th>Стоимость</th>
+                <th colspan="2">Модификация</th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(m => item.Id)</td>
+                    <td>@Html.DisplayFor(m => item.TitlePlan)</td>
+                    <td>@Html.DisplayFor(m => item.Description)</td>
+                    <td>@Html.DisplayFor(m => item.CostPlan)</td>
+                    <td>@Html.ActionLink("Редактировать", "Edit", new { item.Id })</td>
+                    <td>@Html.ActionLink("Удалить", "Delete", new { item.Id })</td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+
+<div>
+    @Html.PagedListPager(Model, page => Url.Action("Index", new
+    {
+        page = page,
+    searchTitle = ViewData["searchTitle"]
+}))
+</div>

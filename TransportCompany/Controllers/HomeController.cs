@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using TransportCompany.Models;
 using TransportCompany.Data;
-using TransportCompany.Models.CodeFirst;
+using TransportCompany.Models;
 
 namespace TransportCompany.Controllers
 {
@@ -21,7 +16,6 @@ namespace TransportCompany.Controllers
 
         public IActionResult Index()
         {
-            db.Positions.Add(new Position { Id = 1, JobTitle = "1" });
             return View();
         }
 

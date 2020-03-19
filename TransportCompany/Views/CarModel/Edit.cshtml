@@ -1,0 +1,22 @@
+﻿@model TransportCompany.Models.CodeFirst.CarModel
+@{
+    ViewData["Title"] = "Редактировать модель автомобиля";
+}
+
+<h2>Редактировать модель автомобиля</h2>
+<div>
+    @Html.ActionLink("Добавить модель", "Create")
+    @Html.ActionLink("Все модели", "Index")
+</div>
+
+<div>
+    <form method="post">
+        @Html.EditorForModel()
+        <input type="submit" value="Сохранить измененя" />
+    </form>
+</div>
+
+@section scripts{
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

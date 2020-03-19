@@ -1,0 +1,64 @@
+﻿@model TransportCompany.Models.CodeFirst.Trip
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create</h2>
+
+<div>
+    @Html.ValidationSummary(true)
+    <form method="post">
+        <table class="table table-bordered">
+            <tr>
+                <th>@Html.DisplayNameFor(m => m.DateTimeTrip)</th>
+                <td>
+                    @Html.EditorFor(m => m.DateTimeTrip)
+                    @Html.ValidationMessageFor(m => m.DateTimeTrip)
+                </td>
+            </tr>
+            <tr>
+                <th>@Html.DisplayNameFor(m => m.Telephone)</th>
+                <td>
+                    @Html.EditorFor(m => m.Telephone)
+                    @Html.ValidationMessageFor(m => m.Telephone)
+                </td>
+            </tr>
+            <tr>
+                <th>@Html.DisplayNameFor(m => m.DeparturePoint)</th>
+                <td>
+                    @Html.EditorFor(m => m.DeparturePoint)
+                    @Html.ValidationMessageFor(m => m.DeparturePoint)
+                </td>
+            </tr>
+            <tr>
+                <th>@Html.DisplayNameFor(m => m.DestinationPoint)</th>
+                <td>
+                    @Html.EditorFor(m => m.DestinationPoint)
+                    @Html.ValidationMessageFor(m => m.DestinationPoint)
+                </td>
+            </tr>
+            <tr>
+                <th>@Html.DisplayNameFor(m => m.CarId)</th>
+                <td>@Html.DropDownListFor(m => m.CarId, ViewBag.Cars as SelectList)</td>
+            </tr>
+            <tr>
+                <th>@Html.DisplayNameFor(m => m.TariffPlanId)</th>
+                <td>@Html.DropDownListFor(m => m.TariffPlanId, ViewBag.TariffPlans as SelectList)</td>
+            </tr>
+            <tr>
+                <th>@Html.DisplayNameFor(m => m.OperatorId)</th>
+                <td>@Html.DropDownListFor(m => m.OperatorId, ViewBag.Operators as SelectList)</td>
+            </tr>
+            <tr>
+                <th>@Html.DisplayNameFor(m => m.DriverId)</th>
+                <td>@Html.DropDownListFor(m => m.DriverId, ViewBag.Drivers as SelectList)</td>
+            </tr>
+        </table>
+        <input type="submit" value="Добавить" />
+    </form>
+</div>
+
+@section scripts{
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

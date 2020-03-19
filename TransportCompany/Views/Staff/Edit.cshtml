@@ -1,0 +1,47 @@
+﻿@model TransportCompany.Models.CodeFirst.Staff
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<div>
+    <form method="post">
+        <table class="table table-bordered">
+            <tr>
+                <th>@Html.DisplayNameFor(m => m.FioStaff)</th>
+                <td>@Html.EditorFor(m => m.FioStaff)</td>
+            </tr>
+            <tr>
+                <th>@Html.DisplayNameFor(m => m.Age)</th>
+                <td>@Html.EditorFor(m => m.Age)</td>
+            </tr>
+            <tr>
+                <th>@Html.DisplayNameFor(m => m.Gender)</th>
+                <td>@Html.EditorFor(m => m.Gender)</td>
+            </tr>
+            <tr>
+                <th>@Html.DisplayNameFor(m => m.Address)</th>
+                <td>@Html.EditorFor(m => m.Address)</td>
+            </tr>
+            <tr>
+                <th>@Html.DisplayNameFor(m => m.Telephone)</th>
+                <td>@Html.EditorFor(m => m.Telephone)</td>
+            </tr>
+            <tr>
+                <th>@Html.DisplayNameFor(m => m.Passport)</th>
+                <td>@Html.EditorFor(m => m.Passport)</td>
+            </tr>
+            <tr>
+                <th>@Html.DisplayNameFor(m => m.PositionId)</th>
+                <td>@Html.DropDownListFor(m => m.PositionId, ViewBag.Positions as SelectList)</td>
+            </tr>
+        </table>
+        <input type="submit" value="Сохранить изменения" />
+    </form>
+</div>
+
+@section scripts{
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

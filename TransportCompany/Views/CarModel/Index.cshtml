@@ -1,0 +1,58 @@
+﻿@using X.PagedList.Mvc.Core
+@using X.PagedList
+@model IPagedList<TransportCompany.Models.CodeFirst.CarModel>
+@{
+    ViewData["Title"] = "Модели автомобилей";
+}
+
+<h2>Модели автомобилей</h2>
+
+<div>
+    @Html.ActionLink("Добавить модель", "Create")
+    @Html.ActionLink("Все модели", "Index")
+</div>
+
+<div>
+    <form>
+        <p>
+            Название модели
+            <input type="text" name="searchModel" value="@ViewData["searchModel"]" />
+            <input type="submit" value="Фильтровать" />
+        </p>
+    </form>
+</div>
+
+<div class="row">
+    <div class="col-md-7">
+        <table class="table table-bordered table-hover">
+            <tr>
+                <th>#</th>
+                <th>Название модели</th>
+                <th>Спецификация</th>
+                <th>Стоимость</th>
+                <th>Специфика</th>
+                <th colspan="2">Модификация</th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(m => item.Id)</td>
+                    <td>@Html.DisplayFor(m => item.NameModel)</td>
+                    <td>@Html.DisplayFor(m => item.Specifications)</td>
+                    <td>@Html.DisplayFor(m => item.CostModel)</td>
+                    <td>@Html.DisplayFor(m => item.Specificity)</td>
+                    <td>@Html.ActionLink("Редактировать", "Edit", new { item.Id })</td>
+                    <td>@Html.ActionLink("Удалить", "Delete", new { item.Id })</td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+
+<div>
+    @Html.PagedListPager(Model, page => Url.Action("Index", new
+    {
+        page = page,
+    searchModel = ViewData["searchModel"]
+    }))
+</div>

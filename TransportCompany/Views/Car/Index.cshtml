@@ -1,0 +1,64 @@
+﻿@using X.PagedList.Mvc.Core
+@using X.PagedList
+@model IPagedList<TransportCompany.Models.CodeFirst.Car>
+@{
+    ViewData["Title"] = "Автомобили";
+}
+
+<h2>Автомобили</h2>
+
+<div>
+    @Html.ActionLink("Добавить автомобиль", "Create")
+    @Html.ActionLink("Все автомобили", "Index")
+</div>
+
+<div>
+    <form>
+        <p>
+            Дата выпуска
+            <input type="date" name="searchYear" value="@String.Format("{0:yyyy-MM-dd}", ViewData["searchYear"])" />
+        </p>
+        <input type="submit" value="Фильтровать" />
+    </form>
+</div>
+
+<div class="row">
+    <div class="col-md-10">
+        <table class="table table-bordered table-hover">
+            <tr>
+                <th>#</th>
+                <th>Регистрационный номер</th>
+                <th>Номер гузова</th>
+                <th>Номер двигателя</th>
+                <th>Дата выпуска</th>
+                <th>Пробег</th>
+                <th>Дата последнего ТО</th>
+                <th>Модель автомобиля</th>
+                <th colspan="2">Модификации</th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(m => item.Id)</td>
+                    <td>@Html.DisplayFor(m => item.RegistrationNumber)</td>
+                    <td>@Html.DisplayFor(m => item.BodyNumber)</td>
+                    <td>@Html.DisplayFor(m => item.EngineNumber)</td>
+                    <td>@Html.DisplayFor(m => item.YearCreation)</td>
+                    <td>@Html.DisplayFor(m => item.Mileage)</td>
+                    <td>@Html.DisplayFor(m => item.LastMaintenanceDate)</td>
+                    <td>@Html.DisplayFor(m => item.CarModel.NameModel)</td>
+                    <td>@Html.ActionLink("Редактировать", "Create", new { item.Id })</td>
+                    <td>@Html.ActionLink("Удалить", "Delete", new { item.Id })</td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+
+<div>
+    @Html.PagedListPager(Model, page => Url.Action("Index", new
+    {
+        page = page,
+    searchYear = ViewData["searchYear"]
+}))
+</div>

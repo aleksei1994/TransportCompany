@@ -1,0 +1,70 @@
+﻿@using X.PagedList.Mvc.Core
+@using X.PagedList
+@model IPagedList<TransportCompany.Models.CodeFirst.Trip>
+@{
+    ViewData["Title"] = "Рейсы";
+}
+
+<h2>Рейсы</h2>
+
+<div>
+    @Html.ActionLink("Добавить рейс", "Create")
+</div>
+
+<div>
+    <form>
+        <p>
+            ФИО Оператора
+            <input type="text" name="searchOperator" value="@ViewData["searchOperator"]" />
+            ФИО Водителя
+            <input type="text" name="searchDriver" value="@ViewData["searchDriver"]" />
+        </p>
+        <input type="submit" value="Фильтровать" />
+    </form>
+</div>
+
+<div class="row">
+    <div class="col-md-10">
+        <table class="table table-bordered table-hover">
+            <tr>
+                <th>#</th>
+                <th>Дата и время рейса</th>
+                <th>Телефон</th>
+                <th>Пункт отправки</th>
+                <th>Пункт назначения</th>
+                <th>Тариф</th>
+                <th>Стоимость тарифа</th>
+                <th>Автомобиль</th>
+                <th>Водитель</th>
+                <th>Оператор</th>
+                <th colspan="2">Модификация</th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(m => item.Id)</td>
+                    <td>@Html.DisplayFor(m => item.DateTimeTrip)</td>
+                    <td>@Html.DisplayFor(m => item.Telephone)</td>
+                    <td>@Html.DisplayFor(m => item.DeparturePoint)</td>
+                    <td>@Html.DisplayFor(m => item.DestinationPoint)</td>
+                    <td>@Html.DisplayFor(m => item.TariffPlan.TitlePlan)</td>
+                    <td>@Html.DisplayFor(m => item.TariffPlan.CostPlan)</td>
+                    <td>@Html.DisplayFor(m => item.Car.RegistrationNumber)</td>
+                    <td>@Html.DisplayFor(m => item.Driver.FioStaff)</td>
+                    <td>@Html.DisplayFor(m => item.Operator.FioStaff)</td>
+                    <td>@Html.ActionLink("Редактировать", "Edit", item.Id)</td>
+                    <td>@Html.ActionLink("Удалить", "Delete", item.Id)</td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+
+<div>
+    @Html.PagedListPager(Model, page => Url.Action("Index", new
+    {
+        page = page,
+    searchOperator = ViewData["searchOperator"],
+    searchDriver = ViewData["searchDriver"]
+}))
+</div>

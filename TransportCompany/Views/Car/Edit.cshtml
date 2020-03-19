@@ -1,0 +1,47 @@
+﻿@model TransportCompany.Models.CodeFirst.Car
+@{
+    ViewData["Title"] = "Редактировать автомобиль";
+}
+
+<h2>Редактировать автомобиль</h2>
+<div>
+    @Html.ActionLink("Добавить автомобиль", "Create")
+    @Html.ActionLink("Все автомобили", "Index")
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <form method="post">
+            <table class="table table-bordered">
+                <tr>
+                    <th>@Html.DisplayNameFor(m => m.RegistrationNumber)</th>
+                    <td>@Html.EditorFor(m => m.RegistrationNumber)</td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(m => m.BodyNumber)</th>
+                    <td>@Html.EditorFor(m => m.BodyNumber)</td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(m => m.EngineNumber)</th>
+                    <td>@Html.EditorFor(m => m.EngineNumber)</td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(m => m.YearCreation)</th>
+                    <td>@Html.EditorFor(m => m.YearCreation)</td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(m => m.Mileage)</th>
+                    <td>@Html.EditorFor(m => m.Mileage)</td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(m => m.LastMaintenanceDate)</th>
+                    <td>@Html.EditorFor(m => m.LastMaintenanceDate)</td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(m => m.CarModelId)</th>
+                    <td>@Html.DropDownListFor(m => m.CarModelId, ViewBag.CarModels as SelectList)</td>
+                </tr>
+            </table>
+            <input type="submit" value="Добавить" />
+        </form>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+﻿@model TransportCompany.Models.CodeFirst.Position;
+@{
+    ViewData["Title"] = "Редактировать должность";
+}
+
+<h2>Редактировать должность</h2>
+
+
+<div>
+    <form method="post">
+        @Html.EditorForModel()
+        <input type="submit" value="Сохранить изменения" />
+    </form>
+</div>
+
+@section scripts{
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

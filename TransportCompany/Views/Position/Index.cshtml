@@ -1,0 +1,56 @@
+﻿@using X.PagedList.Mvc.Core
+@using X.PagedList
+@model IPagedList<TransportCompany.Models.CodeFirst.Position>
+@{
+    ViewData["Title"] = "Должности";
+}
+
+<h2>Должности</h2>
+
+<div>
+    @Html.ActionLink("Добавить должность", "Create")
+</div>
+
+<div>
+    <form>
+        <p>
+            <input type="text" name="searchPosition" value="@ViewData["searchPosition"]" />
+            <input type="submit" value="Фильтровать" />
+        </p>
+    </form>
+</div>
+
+<div class="row">
+    <div class="col-md-7">
+        <table class="table table-bordered table-hover">
+            <tr>
+                <th>#</th>
+                <th>Название должности</th>
+                <th>Оклад</th>
+                <th>Обязанности</th>
+                <th>Требования</th>
+                <th colspan="2">Модификации</th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(m => item.Id)</td>
+                    <td>@Html.DisplayFor(m => item.JobTitle)</td>
+                    <td>@Html.DisplayFor(m => item.Salary)</td>
+                    <td>@Html.DisplayFor(m => item.Responsibilities)</td>
+                    <td>@Html.DisplayFor(m => item.Requirements)</td>
+                    <td>@Html.ActionLink("Редактировать", "Edit", new { item.Id })</td>
+                    <td>@Html.ActionLink("Удалить", "Delete", new { item.Id })</td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+
+<div>
+    @Html.PagedListPager(Model, page => Url.Action("Index", new
+    {
+        page = page,
+    searchPosition = ViewData["searchPosition"]
+    }))
+</div>
