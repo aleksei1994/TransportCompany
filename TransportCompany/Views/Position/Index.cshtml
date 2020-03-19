@@ -9,6 +9,7 @@
 
 <div>
     @Html.ActionLink("Добавить должность", "Create")
+    @Html.ActionLink("Все должности", "Index")
 </div>
 
 <div>
@@ -40,7 +41,7 @@
                     <td>@Html.DisplayFor(m => item.Responsibilities)</td>
                     <td>@Html.DisplayFor(m => item.Requirements)</td>
                     <td>@Html.ActionLink("Редактировать", "Edit", new { item.Id })</td>
-                    <td>@Html.ActionLink("Удалить", "Delete", new { item.Id })</td>
+                    <td>@Html.ActionLink("Удалить", "Delete", new { item.Id }, new { onclick = "return confirm('Удалить?')" })</td>
                 </tr>
             }
         </table>

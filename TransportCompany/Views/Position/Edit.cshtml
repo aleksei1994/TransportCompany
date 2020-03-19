@@ -4,12 +4,15 @@
 }
 
 <h2>Редактировать должность</h2>
-
+<div>
+    @Html.ActionLink("Добавить должность", "Create")
+    @Html.ActionLink("Все должности", "Index")
+</div>
 
 <div>
     <form method="post">
         @Html.EditorForModel()
-        <input type="submit" value="Сохранить изменения" />
+        <input type="submit" value="Сохранить" onclick="return confirm('Сохранить изменения?')"/>
     </form>
 </div>
 

@@ -42,7 +42,7 @@
                     <td>@Html.DisplayFor(m => item.CostModel)</td>
                     <td>@Html.DisplayFor(m => item.Specificity)</td>
                     <td>@Html.ActionLink("Редактировать", "Edit", new { item.Id })</td>
-                    <td>@Html.ActionLink("Удалить", "Delete", new { item.Id })</td>
+                    <td>@Html.ActionLink("Удалить", "Delete", new { item.Id }, new { onclick = "return confirm('Удалить?')" })</td>
                 </tr>
             }
         </table>

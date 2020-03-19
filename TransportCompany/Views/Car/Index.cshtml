@@ -16,7 +16,7 @@
     <form>
         <p>
             Дата выпуска
-            <input type="date" name="searchYear" value="@String.Format("{0:yyyy-MM-dd}", ViewData["searchYear"])" />
+            <input type="date" name="searchYear" value="@String.Format(" {0:yyyy-MM-dd}", ViewData["searchYear"])" />
         </p>
         <input type="submit" value="Фильтровать" />
     </form>
@@ -47,8 +47,8 @@
                     <td>@Html.DisplayFor(m => item.Mileage)</td>
                     <td>@Html.DisplayFor(m => item.LastMaintenanceDate)</td>
                     <td>@Html.DisplayFor(m => item.CarModel.NameModel)</td>
-                    <td>@Html.ActionLink("Редактировать", "Create", new { item.Id })</td>
-                    <td>@Html.ActionLink("Удалить", "Delete", new { item.Id })</td>
+                    <td>@Html.ActionLink("Редактировать", "Edit", new { item.Id })</td>
+                    <td>@Html.ActionLink("Удалить", "Delete", new { item.Id }, new { onclick = "return confirm('Удалить?')" })</td>
                 </tr>
             }
         </table>
@@ -58,7 +58,7 @@
 <div>
     @Html.PagedListPager(Model, page => Url.Action("Index", new
     {
-        page = page,
+    page = page,
     searchYear = ViewData["searchYear"]
-}))
+    }))
 </div>

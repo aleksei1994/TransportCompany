@@ -9,15 +9,16 @@
 
 <div>
     @Html.ActionLink("Добавить рейс", "Create")
+    @Html.ActionLink("Все рейсы", "Index")
 </div>
 
 <div>
     <form>
         <p>
             ФИО Оператора
-            <input type="text" name="searchOperator" value="@ViewData["searchOperator"]" />
+            <input type="text" name="searchOperator" value="@ViewData[" searchOperator"]" />
             ФИО Водителя
-            <input type="text" name="searchDriver" value="@ViewData["searchDriver"]" />
+            <input type="text" name="searchDriver" value="@ViewData[" searchDriver"]" />
         </p>
         <input type="submit" value="Фильтровать" />
     </form>
@@ -53,7 +54,7 @@
                     <td>@Html.DisplayFor(m => item.Driver.FioStaff)</td>
                     <td>@Html.DisplayFor(m => item.Operator.FioStaff)</td>
                     <td>@Html.ActionLink("Редактировать", "Edit", item.Id)</td>
-                    <td>@Html.ActionLink("Удалить", "Delete", item.Id)</td>
+                    <td>@Html.ActionLink("Удалить", "Delete", item.Id, new { onclick = "return confirm('Удалить?')" })</td>
                 </tr>
             }
         </table>
@@ -63,8 +64,8 @@
 <div>
     @Html.PagedListPager(Model, page => Url.Action("Index", new
     {
-        page = page,
+    page = page,
     searchOperator = ViewData["searchOperator"],
     searchDriver = ViewData["searchDriver"]
-}))
+    }))
 </div>

@@ -8,14 +8,15 @@
 <h2>Тарифы</h2>
 
 <div>
-    @Html.ActionLink("Добавить", "Create")
+    @Html.ActionLink("Добавить тариф", "Create")
+    @Html.ActionLink("Все тарифы", "Index")
 </div>
 
 <div>
     <form>
         <p>
             Название тарифа
-            <input type="text" name="searchTitle" value="@ViewData["searchTitle"]" />
+            <input type="text" name="searchTitle" value="@ViewData[" searchTitle"]" />
             <input type="submit" value="Фильтровать" />
         </p>
     </form>
@@ -39,7 +40,7 @@
                     <td>@Html.DisplayFor(m => item.Description)</td>
                     <td>@Html.DisplayFor(m => item.CostPlan)</td>
                     <td>@Html.ActionLink("Редактировать", "Edit", new { item.Id })</td>
-                    <td>@Html.ActionLink("Удалить", "Delete", new { item.Id })</td>
+                    <td>@Html.ActionLink("Удалить", "Delete", new { item.Id }, new { onclick = "return confirm('Удалить?')" })</td>
                 </tr>
             }
         </table>
@@ -49,7 +50,7 @@
 <div>
     @Html.PagedListPager(Model, page => Url.Action("Index", new
     {
-        page = page,
+    page = page,
     searchTitle = ViewData["searchTitle"]
-}))
+    }))
 </div>

@@ -1,61 +1,68 @@
 ﻿@model TransportCompany.Models.CodeFirst.Trip
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Редактировать рейс";
 }
 
-<h2>Edit</h2>
+<h2>Редактировать рейс</h2>
 
 <div>
-    @Html.ValidationSummary(true)
-    <form method="post">
-        <table class="table table-bordered">
-            <tr>
-                <th>@Html.DisplayNameFor(m => m.DateTimeTrip)</th>
-                <td>
-                    @Html.EditorFor(m => m.DateTimeTrip)
-                    @Html.ValidationMessageFor(m => m.DateTimeTrip)
-                </td>
-            </tr>
-            <tr>
-                <th>@Html.DisplayNameFor(m => m.Telephone)</th>
-                <td>
-                    @Html.EditorFor(m => m.Telephone)
-                    @Html.ValidationMessageFor(m => m.Telephone)
-                </td>
-            </tr>
-            <tr>
-                <th>@Html.DisplayNameFor(m => m.DeparturePoint)</th>
-                <td>
-                    @Html.EditorFor(m => m.DeparturePoint)
-                    @Html.ValidationMessageFor(m => m.DeparturePoint)
-                </td>
-            </tr>
-            <tr>
-                <th>@Html.DisplayNameFor(m => m.DestinationPoint)</th>
-                <td>
-                    @Html.EditorFor(m => m.DestinationPoint)
-                    @Html.ValidationMessageFor(m => m.DestinationPoint)
-                </td>
-            </tr>
-            <tr>
-                <th>@Html.DisplayNameFor(m => m.CarId)</th>
-                <td>@Html.DropDownListFor(m => m.CarId, ViewBag.Cars as SelectList)</td>
-            </tr>
-            <tr>
-                <th>@Html.DisplayNameFor(m => m.TariffPlanId)</th>
-                <td>@Html.DropDownListFor(m => m.TariffPlanId, ViewBag.TariffPlans as SelectList)</td>
-            </tr>
-            <tr>
-                <th>@Html.DisplayNameFor(m => m.OperatorId)</th>
-                <td>@Html.DropDownListFor(m => m.OperatorId, ViewBag.Operators as SelectList)</td>
-            </tr>
-            <tr>
-                <th>@Html.DisplayNameFor(m => m.DriverId)</th>
-                <td>@Html.DropDownListFor(m => m.DriverId, ViewBag.Drivers as SelectList)</td>
-            </tr>
-        </table>
-        <input type="submit" value="Добавить" />
-    </form>
+    @Html.ActionLink("Добавить рейс", "Create")
+    @Html.ActionLink("Все рейсы", "Index")
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        @Html.ValidationSummary(true)
+        <form method="post">
+            <table class="table table-bordered">
+                <tr>
+                    <th>@Html.DisplayNameFor(m => m.DateTimeTrip)</th>
+                    <td>
+                        @Html.EditorFor(m => m.DateTimeTrip)
+                        @Html.ValidationMessageFor(m => m.DateTimeTrip)
+                    </td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(m => m.Telephone)</th>
+                    <td>
+                        @Html.EditorFor(m => m.Telephone)
+                        @Html.ValidationMessageFor(m => m.Telephone)
+                    </td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(m => m.DeparturePoint)</th>
+                    <td>
+                        @Html.EditorFor(m => m.DeparturePoint)
+                        @Html.ValidationMessageFor(m => m.DeparturePoint)
+                    </td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(m => m.DestinationPoint)</th>
+                    <td>
+                        @Html.EditorFor(m => m.DestinationPoint)
+                        @Html.ValidationMessageFor(m => m.DestinationPoint)
+                    </td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(m => m.CarId)</th>
+                    <td>@Html.DropDownListFor(m => m.CarId, ViewBag.Cars as SelectList)</td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(m => m.TariffPlanId)</th>
+                    <td>@Html.DropDownListFor(m => m.TariffPlanId, ViewBag.TariffPlans as SelectList)</td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(m => m.OperatorId)</th>
+                    <td>@Html.DropDownListFor(m => m.OperatorId, ViewBag.Operators as SelectList)</td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(m => m.DriverId)</th>
+                    <td>@Html.DropDownListFor(m => m.DriverId, ViewBag.Drivers as SelectList)</td>
+                </tr>
+            </table>
+            <input type="submit" value="Сохранить" onclick="return confirm('Сохранить изменения?')" />
+        </form>
+    </div>
 </div>
 
 @section scripts{

@@ -9,13 +9,14 @@
 
 <div>
     @Html.ActionLink("Добавить сотрудника", "Create")
+    @Html.ActionLink("Все сотрудники", "Index")
 </div>
 
 <div>
     <form>
         <p>
             Должность сотрудника
-            <input type="text" name="searchPosition" value="@ViewData["searchPosition"]" />
+            <input type="text" name="searchPosition" value="@ViewData[" searchPosition"]" />
             <input type="submit" value="Фильтровать" />
         </p>
     </form>
@@ -45,7 +46,7 @@
                     <td>@Html.DisplayFor(m => item.Passport)</td>
                     <td>@Html.DisplayFor(m => item.Position.JobTitle)</td>
                     <td>@Html.ActionLink("Редактировать", "Edit", new { item.Id })</td>
-                    <td>@Html.ActionLink("Удалить", "Delete", new { item.Id })</td>
+                    <td>@Html.ActionLink("Удалить", "Delete", new { item.Id }, new { onclick = "return confirm('Удалить?')" })</td>
                 </tr>
             }
         </table>
@@ -54,8 +55,8 @@
 
 <div>
     @Html.PagedListPager(Model, page => Url.Action("Index", new
-{
+    {
     page = page,
     searchPosition = ViewData["searchPosition"]
-}))
+    }))
 </div>

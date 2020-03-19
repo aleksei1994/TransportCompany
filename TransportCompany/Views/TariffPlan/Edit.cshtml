@@ -1,15 +1,19 @@
 ﻿@model TransportCompany.Models.CodeFirst.TariffPlan
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Редактирование тарифа";
 }
 
-<h2>Create</h2>
+<h2>Редактирование тарифа</h2>
 
+<div>
+    @Html.ActionLink("Добавить тариф", "Create")
+    @Html.ActionLink("Все тарифы", "Index")
+</div>
 
 <div>
     <form method="post">
         @Html.EditorForModel()
-        <input type="submit" value="Сохранить измененя" />
+        <input type="submit" value="Сохранить" onclick="return confirm('Сохранить изменения?')" />
     </form>
 </div>
 

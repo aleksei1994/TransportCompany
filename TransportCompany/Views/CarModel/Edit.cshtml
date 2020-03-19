@@ -12,7 +12,7 @@
 <div>
     <form method="post">
         @Html.EditorForModel()
-        <input type="submit" value="Сохранить измененя" />
+        <input type="submit" value="Сохранить" onclick="return confirm('Сохранить изменения?')" />
     </form>
 </div>
 

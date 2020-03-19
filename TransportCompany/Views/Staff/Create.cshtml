@@ -1,64 +1,70 @@
 ﻿@model TransportCompany.Models.CodeFirst.Staff
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Добавить сотрудника";
 }
 
-<h2>Create</h2>
+<h2>Добавить сотрудника</h2>
 
 <div>
-    @Html.ValidationSummary(true)
-    <form method="post">
-        <table class="table table-bordered">
-            <tr>
-                <th>@Html.DisplayNameFor(m => m.FioStaff)</th>
-                <td>
-                    @Html.EditorFor(m => m.FioStaff)
-                    @Html.ValidationMessageFor(m => m.FioStaff)
-                </td>
-            </tr>
-            <tr>
-                <th>@Html.DisplayNameFor(m => m.Age)</th>
-                <td>
-                    @Html.EditorFor(m => m.Age)
-                    @Html.ValidationMessageFor(m => m.Age)
-                </td>
-            </tr>
-            <tr>
-                <th>@Html.DisplayNameFor(m => m.Gender)</th>
-                <td>
-                    @Html.EditorFor(m => m.Gender)
-                    @Html.ValidationMessageFor(m => m.Gender)
-                </td>
-            </tr>
-            <tr>
-                <th>@Html.DisplayNameFor(m => m.Address)</th>
-                <td>
-                    @Html.EditorFor(m => m.Address)
-                    @Html.ValidationMessageFor(m => m.Address)
-                </td>
-            </tr>
-            <tr>
-                <th>@Html.DisplayNameFor(m => m.Telephone)</th>
-                <td>
-                    @Html.EditorFor(m => m.Telephone)
-                    @Html.ValidationMessageFor(m => m.Telephone)
-                </td>
-            </tr>
-            <tr>
-                <th>@Html.DisplayNameFor(m => m.Passport)</th>
-                <td>
-                    @Html.EditorFor(m => m.Passport)
-                    @Html.ValidationMessageFor(m => m.Passport)
-                </td>
-            </tr>
-            <tr>
-                <th>@Html.DisplayNameFor(m => m.PositionId)</th>
-                <td>@Html.DropDownListFor(m => m.PositionId, ViewBag.Positions as SelectList)</td>
-            </tr>
-        </table>
-        <input type="submit" value="Добавить" />
-    </form>
+    @Html.ActionLink("Все сотрудники", "Index")
 </div>
+
+<div class="row">
+    <div class="col-md-6">
+        @Html.ValidationSummary(true)
+        <form method="post">
+            <table class="table table-bordered">
+                <tr>
+                    <th>@Html.DisplayNameFor(m => m.FioStaff)</th>
+                    <td>
+                        @Html.EditorFor(m => m.FioStaff)
+                        @Html.ValidationMessageFor(m => m.FioStaff)
+                    </td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(m => m.Age)</th>
+                    <td>
+                        @Html.EditorFor(m => m.Age)
+                        @Html.ValidationMessageFor(m => m.Age)
+                    </td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(m => m.Gender)</th>
+                    <td>
+                        @Html.EditorFor(m => m.Gender)
+                        @Html.ValidationMessageFor(m => m.Gender)
+                    </td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(m => m.Address)</th>
+                    <td>
+                        @Html.EditorFor(m => m.Address)
+                        @Html.ValidationMessageFor(m => m.Address)
+                    </td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(m => m.Telephone)</th>
+                    <td>
+                        @Html.EditorFor(m => m.Telephone)
+                        @Html.ValidationMessageFor(m => m.Telephone)
+                    </td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(m => m.Passport)</th>
+                    <td>
+                        @Html.EditorFor(m => m.Passport)
+                        @Html.ValidationMessageFor(m => m.Passport)
+                    </td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(m => m.PositionId)</th>
+                    <td>@Html.DropDownListFor(m => m.PositionId, ViewBag.Positions as SelectList)</td>
+                </tr>
+            </table>
+            <input type="submit" value="Добавить" />
+        </form>
+    </div>
+</div class="row">
 
 @section scripts{
     <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
