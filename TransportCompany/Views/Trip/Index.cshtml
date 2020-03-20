@@ -53,8 +53,8 @@
                     <td>@Html.DisplayFor(m => item.Car.RegistrationNumber)</td>
                     <td>@Html.DisplayFor(m => item.Driver.FioStaff)</td>
                     <td>@Html.DisplayFor(m => item.Operator.FioStaff)</td>
-                    <td>@Html.ActionLink("Редактировать", "Edit", item.Id)</td>
-                    <td>@Html.ActionLink("Удалить", "Delete", item.Id, new { onclick = "return confirm('Удалить?')" })</td>
+                    <td>@Html.ActionLink("Редактировать", "Edit", new { item.Id})</td>
+                    <td>@Html.ActionLink("Удалить", "Delete", new { item.Id }, new { onclick = "return confirm('Удалить?')" })</td>
                 </tr>
             }
         </table>
